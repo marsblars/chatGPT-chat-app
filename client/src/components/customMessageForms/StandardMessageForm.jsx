@@ -1,8 +1,12 @@
-import { PaperAirplaneIcon, PaperClipIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import {
+  PaperAirplaneIcon,
+  PaperClipIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 
-const StandardMessageForm = ({ props, activeChat}) => {
+const StandardMessageForm = ({ props, activeChat }) => {
   const [message, setMessage] = useState("");
   const [attachment, setAttachment] = useState("");
   const [preview, setPreview] = useState("");
@@ -14,7 +18,7 @@ const StandardMessageForm = ({ props, activeChat}) => {
       .toISOString()
       .replace("T", " ")
       .replace("Z", `${Math.floor(Math.random() * 1000)}+00:00`);
-    const at = attachment ? [{ blob: attachment, file: attachment.name}] : [];
+    const at = attachment ? [{ blob: attachment, file: attachment.name }] : [];
     const form = {
       attachments: at,
       created: date,
@@ -49,9 +53,9 @@ const StandardMessageForm = ({ props, activeChat}) => {
       <div className="message-form">
         <div className="message-form-input-container">
           <input
+            className="message-form-input"
             type="text"
             value={message}
-            className="message-form-input"
             onChange={handleChange}
             placeholder="Chat Message"
           />
