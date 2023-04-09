@@ -1,6 +1,6 @@
-import { creteApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const api = creteApi({
+export const api = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
     reducerPath: "main",
     tagTypes: [],
@@ -12,7 +12,14 @@ export const api = creteApi({
                 body: payload,
             }),
         }),
+        postAiCode: build.mutation({
+            query: (payload) => ({
+                url: "openai/code",
+                method: "POST",
+                body: payload,
+            }),
+        }),
     }),
 });
 
-export const { usePostAiTextMutation } = api;
+export const { usePostAiTextMutation, usePostAiCodeMutation } = api;
